@@ -9,12 +9,14 @@ def main():
                             dumps(x).encode('utf-8'))
 
     # get messages
-    messages = range(3)
+    messages = range(6,100)
 
     # send messages to kafka
+    topic = 'second_topic' # kafka topic to send data to
     for message in messages:
-        data = {'number' : str(message)+'_sergio'}
-        producer.send('second_topic', value=data)
+        data = str(message)+'_message'
+        producer.send(topic, value=data)
+        sleep(3)
 
 if __name__ == '__main__':
     main()
