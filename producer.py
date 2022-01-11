@@ -9,7 +9,7 @@ def main():
                             dumps(x).encode('utf-8'))
 
     # get messages
-    messages = range(6,100)
+    messages = range(6,8)
 
     # send messages to kafka
     topic = 'second_topic' # kafka topic to send data to
@@ -17,6 +17,8 @@ def main():
         data = str(message)+'_message'
         producer.send(topic, value=data)
         sleep(3)
-
+    
+    # close producer
+    producer.close()
 if __name__ == '__main__':
     main()
